@@ -7,4 +7,4 @@ SELECT
     event_type,
     timestamp,
     raw_payload
-FROM {{ source('RAW', 'RAW_LEARNING_EVENTS') }}
+FROM KAFKA_DEMO.RAW.RAW_LEARNING_EVENTS
