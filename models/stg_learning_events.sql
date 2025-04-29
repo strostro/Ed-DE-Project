@@ -7,4 +7,5 @@ SELECT
     event_type,
     timestamp,
     raw_payload
-FROM KAFKA_DEMO.RAW.RAW_LEARNING_EVENTS
+FROM kafka_demo.public.raw_learning_events
+
