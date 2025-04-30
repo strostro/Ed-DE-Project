@@ -14,7 +14,8 @@ aggregated as (
 
         -- 视频类指标
         count_if(event_type = 'video_started') as video_start_count,
-        sum(video_duration) as total_video_duration,
+        count_if(event_type = 'video_completed') as video_complete_count,
+        sum(coalesce(video_duration, 0)) as total_video_duration,
 
         -- 阅读类指标
         avg(read_percent) as avg_read_percent,
@@ -25,7 +26,10 @@ aggregated as (
         -- 题目类指标
         count_if(event_type = 'question_submitted') as question_count,
         sum(case when is_correct then 1 else 0 end) as correct_count,
-        round(100.0 * sum(case when is_correct then 1 else 0 end) / nullif(count_if(event_type = 'question_submitted'), 0), 2) as correct_rate,
+        round(
+            100.0 * sum(case when is_correct then 1 else 0 end) / nullif(count_if(event_type = 'question_submitted'), 0),
+            2
+        ) as correct_rate,
 
         -- 总互动数
         count(*) as total_events,
