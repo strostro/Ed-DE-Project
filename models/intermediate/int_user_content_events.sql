@@ -21,12 +21,12 @@ joined as (
         base.content_id,
 
         -- 关联 metadata 展开字段
-        metadata_fields.duration,
+        metadata_fields.video_duration,
         metadata_fields.read_percent,
         metadata_fields.slide_index,
         metadata_fields.question_id,
         metadata_fields.answer_given,
-        metadata_fields.correct
+        metadata_fields.is_correct
 
     from base
     left join metadata_fields
