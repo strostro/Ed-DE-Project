@@ -10,7 +10,7 @@ with events as (
         content_id,
         event_type,
         timestamp,
-        video_duration,
+        duration as video_duration,
         read_percent,
         slide_index,
         question_id,
@@ -19,7 +19,7 @@ with events as (
         score,
         total_questions,
         completion_ratio
-    from {{ ref('int_user_content_summary') }}
+    from {{ ref('int_user_content_events') }}
 )
 
 select * from events
