@@ -1,6 +1,6 @@
 -- models/marts/fct_user_event_timeline.sql
 
-{{ config(materialized='view') }}
+{{ config(materialized='table') }}
 
 with events as (
     select
