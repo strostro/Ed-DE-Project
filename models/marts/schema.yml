@@ -41,9 +41,11 @@ models:
       - name: content_id
         description: "内容唯一标识"
         tests:
-          - not_null
+        - not_null
       - name: video_started_count
         description: "该内容作为视频被点击播放的次数"
+      - name: video_completed_count
+        description: "视频播放完成的次数"
       - name: total_video_duration
         description: "视频观看总时长"
       - name: avg_read_percent
@@ -56,6 +58,8 @@ models:
         description: "被答对的题目数量"
       - name: correct_rate
         description: "题目正确率"
+      - name: total_events
+        description: "互动总数"
       - name: last_event_time
         description: "该内容最后一次被互动的时间"
 
