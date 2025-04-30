@@ -23,9 +23,9 @@ aggregated as (
 
         -- 题目指标
         count_if(event_type = 'question_submitted') as question_count,
-        sum(case when correct then 1 else 0 end) as correct_count,
+        sum(case when is_correct then 1 else 0 end) as correct_count,
         round(
-            100.0 * sum(case when correct then 1 else 0 end) / nullif(count_if(event_type = 'question_submitted'), 0),
+            100.0 * sum(case when is_correct then 1 else 0 end) / nullif(count_if(event_type = 'question_submitted'), 0),
             2
         ) as correct_rate,
 
