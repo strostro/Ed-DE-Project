@@ -10,7 +10,7 @@ with events as (
         content_id,
         event_type,
         timestamp,
-        duration as video_duration,
+        video_duration,
         read_percent,
         slide_index,
         question_id,
