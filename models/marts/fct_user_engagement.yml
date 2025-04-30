@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: fct_user_engagement
+    description: "每位用户在每门课程下的行为参与度指标宽表，统计了用户的视频、阅读、幻灯片、答题等行为次数"
+    columns:
+      - name: user_id
+        description: "用户唯一标识"
+        tests:
+          - not_null
+
+      - name: course_id
+        description: "课程唯一标识"
+        tests:
+          - not_null
+
+      - name: video_start_count
+        description: "用户观看视频的次数"
+
+      - name: video_complete_count
+        description: "用户完整观看视频的次数"
+
+      - name: article_read_count
+        description: "用户阅读文章的次数"
+
+      - name: slide_viewed_count
+        description: "用户浏览幻灯片的次数"
+
+      - name: quiz_completed_count
+        description: "用户完成测验的次数"
+
+      - name: exercise_completed_count
+        description: "用户完成练习的次数"
