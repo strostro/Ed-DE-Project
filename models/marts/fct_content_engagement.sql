@@ -13,7 +13,7 @@ aggregated as (
         -- 视频指标
         count_if(event_type = 'video_started') as video_started_count,
         count_if(event_type = 'video_completed') as video_completed_count,
-        sum(coalesce(duration, 0)) as total_video_duration,
+        sum(coalesce(video_duration, 0)) as total_video_duration,
 
         -- 阅读指标
         avg(read_percent) as avg_read_percent,
