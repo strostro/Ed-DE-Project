@@ -39,7 +39,7 @@ pivoted as (
         lesson_id,
         max(case when event_type = 'video_started' then 1 else 0 end) as video_started,
         max(case when event_type = 'video_completed' then 1 else 0 end) as video_completed,
-        max(duration) as duration,
+        max(video_duration) as duration,
         max(read_percent) as read_percent,
         max(slide_index) as slide_index,
         max(score) as score,
