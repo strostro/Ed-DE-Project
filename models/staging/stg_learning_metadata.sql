@@ -28,6 +28,13 @@ flattened as (
         case when event_type = 'question_submitted' then metadata:"correct"::boolean end as is_correct
 
         -- 🧩 你可以继续添加更多字段，如 score、completion_ratio 等
+        -- 来自 quiz_completed 或 exercise_completed
+        case when event_type in ('quiz_completed', 'exercise_completed') then metadata:"score"::float end as score,
+        case when event_type in ('quiz_completed', 'exercise_completed') then metadata:"total_questions"::int end as total_questions,
+
+        -- 来自 lesson_completed
+        case when event_type = 'lesson_completed' then metadata:"completion_ratio"::float end as completion_ratio
+
     from base
 )
 

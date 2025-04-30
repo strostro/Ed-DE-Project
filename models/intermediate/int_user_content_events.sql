@@ -26,7 +26,10 @@ joined as (
         metadata_fields.slide_index,
         metadata_fields.question_id,
         metadata_fields.answer_given,
-        metadata_fields.is_correct
+        metadata_fields.is_correct,
+        metadata_fields.score,
+        metadata_fields.total_questions,
+        metadata_fields.completion_ratio
 
     from base
     left join metadata_fields
