@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: fct_user_engagement
+    description: "用户在各课程中的整体学习参与情况，包括视频、阅读、题目、总互动数等"
+    columns:
+      - name: user_id
+        description: "用户唯一标识"
+        tests:
+          - not_null
+      - name: course_id
+        description: "课程唯一标识"
+        tests:
+          - not_null
+      - name: video_start_count
+        description: "用户观看视频的次数"
+      - name: total_video_duration
+        description: "用户观看视频的总时长（秒）"
+      - name: avg_read_percent
+        description: "文章阅读平均百分比"
+      - name: slide_view_count
+        description: "幻灯片查看次数"
+      - name: question_count
+        description: "用户答题次数"
+      - name: correct_count
+        description: "答对题目数量"
+      - name: correct_rate
+        description: "答题正确率（百分比）"
+      - name: total_events
+        description: "该用户在课程中的所有事件总数"
+      - name: last_event_time
+        description: "最近一次事件的时间"
+
+  - name: fct_content_engagement
+    description: "每个课程内容项的总体参与情况，如视频观看、题目作答、阅读等"
+    columns:
+      - name: course_id
+        description: "课程唯一标识"
+        tests:
+          - not_null
+      - name: content_id
+        description: "内容唯一标识"
+        tests:
+          - not_null
+      - name: video_started_count
+        description: "该内容作为视频被点击播放的次数"
+      - name: total_video_duration
+        description: "视频观看总时长"
+      - name: avg_read_percent
+        description: "内容作为文章时的平均阅读比例"
+      - name: slide_viewed_count
+        description: "内容作为幻灯片时的查看次数"
+      - name: question_count
+        description: "该内容包含的问题数量"
+      - name: correct_count
+        description: "被答对的题目数量"
+      - name: correct_rate
+        description: "题目正确率"
+      - name: last_event_time
+        description: "该内容最后一次被互动的时间"
+
