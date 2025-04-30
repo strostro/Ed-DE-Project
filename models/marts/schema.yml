@@ -63,3 +63,18 @@ models:
       - name: last_event_time
         description: "该内容最后一次被互动的时间"
 
+  - name: fct_user_event_timeline
+    description: "用户交互事件的完整时间线表，保留所有事件，不聚合，可用于行为排序与路径分析"
+    columns:
+      - name: user_id
+        description: "用户唯一标识"
+        tests:
+          - not_null
+      - name: course_id
+        description: "课程唯一标识"
+      - name: event_type
+        description: "事件类型"
+      - name: timestamp
+        description: "事件发生时间"
+      - name: content_id
+        description: "内容唯一标识"
