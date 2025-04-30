@@ -25,7 +25,7 @@ flattened as (
         -- ❓ Question
         case when event_type = 'question_submitted' then metadata:"question_id"::string end as question_id,
         case when event_type = 'question_submitted' then metadata:"answer_given"::string end as answer_given,
-        case when event_type = 'question_submitted' then metadata:"correct"::boolean end as is_correct
+        case when event_type = 'question_submitted' then metadata:"correct"::boolean end as is_correct,
 
         -- 🧩 你可以继续添加更多字段，如 score、completion_ratio 等
         -- 来自 quiz_completed 或 exercise_completed
