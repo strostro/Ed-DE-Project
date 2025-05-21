@@ -9,7 +9,7 @@ with source as (
         -- 用 parse_json 函数解析 raw_payload 字段
         parse_json(raw_payload) as payload
 
-    from {{ source('kafka_demo', 'raw_learning_events') }}
+    from {{ source('kafka_demo', 'raw_learning_events_v2') }}
 
 ),
 

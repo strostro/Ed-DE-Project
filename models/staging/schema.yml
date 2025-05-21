@@ -4,7 +4,7 @@ sources:
   - name: kafka_demo   # 这是你的 Snowflake 数据库名
     schema: public     # 这是 schema 名
     tables:
-      - name: raw_learning_events  # 这是你在 Snowflake 中的表名
+      - name: raw_learning_events_v2  # 这是你在 Snowflake 中的表名
 
 models:
   - name: stg_learning_events
