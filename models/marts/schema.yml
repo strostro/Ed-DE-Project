@@ -14,6 +14,8 @@ models:
           - not_null
       - name: video_start_count
         description: "用户观看视频的次数"
+      - name: video_complete_count
+        description: "用户完整观看视频的次数"
       - name: total_video_duration
         description: "用户观看视频的总时长（秒）"
       - name: avg_read_percent
@@ -41,7 +43,7 @@ models:
       - name: content_id
         description: "内容唯一标识"
         tests:
-        - not_null
+          - not_null
       - name: video_started_count
         description: "该内容作为视频被点击播放的次数"
       - name: video_completed_count
@@ -101,3 +103,28 @@ models:
       - name: completion_ratio
         description: "完成度"
 
+  - name: fct_user_content_summary
+    description: "每个用户在各内容项上的完成情况，用于教学内容矩阵、行为覆盖率等分析"
+    columns:
+      - name: user_id
+        description: "用户唯一标识"
+        tests:
+          - not_null
+      - name: course_id
+        description: "课程唯一标识"
+        tests:
+          - not_null
+      - name: content_id
+        description: "内容唯一标识"
+        tests:
+          - not_null
+      - name: video_completed
+        description: "是否完成视频观看（1=完成，0=未完成）"
+      - name: article_read_completed
+        description: "是否完成文章阅读（≥80%视为完成）"
+      - name: slide_viewed
+        description: "是否查看过幻灯片（1=有行为，0=无）"
+      - name: question_answered
+        description: "是否提交过题目答案"
+      - name: is_content_completed
+        description: "是否完成该内容（有任一行为即可视为完成）"
