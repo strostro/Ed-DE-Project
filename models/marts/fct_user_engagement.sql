@@ -1,5 +1,3 @@
--- models/marts/fct_user_engagement.sql
-
 {{ config(materialized='table') }}
 
 with events as (
@@ -35,7 +33,35 @@ aggregated as (
         count(*) as total_events,
 
         -- 最近一次行为
-        max(timestamp) as last_event_time
+        max(timestamp) as last_event_time,
+
+        -- 🎯 用户分层标签
+        case
+            when max(timestamp) >= current_date - 7
+                 and count_if(event_type = 'video_completed') >= 3
+                 and round(
+                     100.0 * sum(case when is_correct then 1 else 0 end) / nullif(count_if(event_type = 'question_submitted'), 0),
+                     2
+                 ) >= 70
+                then 'Active_Engaged'
+
+            when max(timestamp) >= current_date - 7
+                 and count_if(event_type = 'video_completed') > 0
+                 and count_if(event_type = 'question_submitted') = 0
+                then 'Passive_Watcher'
+
+            when round(
+                     100.0 * sum(case when is_correct then 1 else 0 end) / nullif(count_if(event_type = 'question_submitted'), 0),
+                     2
+                 ) < 50
+                 and count_if(event_type = 'question_submitted') >= 3
+                then 'Low_Performance'
+
+            when max(timestamp) < current_date - 14
+                then 'Inactive'
+
+            else 'Uncategorized'
+        end as user_segment
 
     from events
     group by user_id, course_id
