@@ -18,4 +18,4 @@ This script consumes real-time learning event messages from a Kafka topic (`lear
 
 ## Run
 ```bash
-python to_snowflake.py
+python_to_snowflake.py
