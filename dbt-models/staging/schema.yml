@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: kafka_demo   
+    schema: public     
+    tables:
+      - name: raw_learning_events_v2  
+
+models:
+  - name: stg_learning_events
+    description: "Flattened and cleaned version of raw Kafka events"
+    columns:
+      - name: event_id
+        description: "Unique identifier for the event"
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        description: "User who performed the action"
+        tests:
+          - not_null
+      - name: event_type
+        description: "Type of event such as video_started, quiz_completed, etc."
