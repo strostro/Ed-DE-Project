@@ -1,3 +1,9 @@
+"""
+Simulates real-time learning behavior events for an EdTech course.
+Each event is sent to a Kafka topic ("learning-events") for downstream processing.
+
+"""
+
 import json
 import random
 import time
@@ -6,13 +12,13 @@ import pandas as pd
 from faker import Faker
 from kafka import KafkaProducer
 
-# ====== Kafka Producer 初始化 ======
+# ====== Initialize Kafka Producer ======
 producer = KafkaProducer(
     bootstrap_servers='3.25.71.43:9092',
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
-# ====== 加载数据文件 ======
+# ====== Load Data Files ======
 students_df = pd.read_csv("course_data/students_list.csv")
 enrollments_df = pd.read_csv("course_data/enrollments.csv")
 
@@ -22,7 +28,7 @@ with open("course_data/course_structure.json", "r", encoding="utf-8") as f:
 fake = Faker()
 random.seed(42)
 
-# ====== 提取课程内容序列 ======
+# ====== Extract All Content Items from Course Structure ======
 content_sequence = []
 for unit in course_structure["units"]:
     for lesson in unit["lessons"]:
@@ -33,7 +39,7 @@ for unit in course_structure["units"]:
                 **content
             })
 
-# ====== 学习完成度策略 ======
+# ====== Define Completion Level Strategy ======
 def assign_completion_level():
     r = random.random()
     if r < 0.8:
@@ -43,6 +49,7 @@ def assign_completion_level():
     else:
         return random.uniform(0.2, 0.45)
 
+# ====== Define Unit Progression Strategy ======
 def assign_unit_progression():
     r = random.random()
     if r < 0.05:
@@ -52,13 +59,13 @@ def assign_unit_progression():
     else:
         return "partial"
 
-# ====== Kafka 发送事件 ======
+# ====== Send Event to Kafka ======
 def send_event(event):
     producer.send("learning-events", value=event)
     print(f"📤 Sent: {event['event_type']} | ID: {event['event_id']} | user: {event['user_id']} | content: {event['content_id']}")
     time.sleep(0.2)
 
-# ====== 模拟内容交互行为 ======
+# ====== Simulate Content Interaction Events ======
 def simulate_events(user_id, course_id, content, base_time):
     content_id = content["content_id"]
     content_type = content["type"]
@@ -109,8 +116,7 @@ def simulate_events(user_id, course_id, content, base_time):
             }))
         send_event(create_event(f"{content_type}_completed"))
 
-
-# ====== 遍历 PY101 报名学生并发送行为事件 ======
+# ====== Simulate Events for Students Enrolled in PY101 ======
 py_enrollments = enrollments_df[enrollments_df['course_id'] == "PY101"]
 
 for _, row in py_enrollments.iterrows():
