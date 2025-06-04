@@ -1,0 +1,79 @@
+{
+  "$schema": "<http://json-schema.org/draft-07/schema#>",
+  "title": "Learning Event",
+  "type": "object",
+  "required": ["event_id", "event_type", "timestamp", "user_id"],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Unique identifier for the event (UUID)"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "video_started", "video_completed",
+        "slide_viewed", "article_read",
+        "quiz_opened", "question_answered",
+        "question_submitted", "quiz_completed",
+        "exercise_opened", "exercise_completed",
+        "lesson_completed"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp of when the event occurred"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "course_id": {
+      "type": "string"
+    },
+    "lesson_id": {
+      "type": "string"
+    },
+    "content_id": {
+      "type": "string"
+    },
+    "question_id": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "number",
+      "description": "Time spent on video or interaction (in seconds)"
+    },
+    "read_percent": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "slide_index": {
+      "type": "integer"
+    },
+    "answer_given": {
+      "type": "string"
+    },
+    "correct": {
+      "type": "boolean"
+    },
+    "score": {
+      "type": "number"
+    },
+    "total_questions": {
+      "type": "integer"
+    },
+    "completion_ratio": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Flexible key-value data for extra tracking info"
+    }
+  }
+}
+
+
