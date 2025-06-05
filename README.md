@@ -1,10 +1,10 @@
 # 🎓 EdTech Analytics Pipeline Project
 
-This project simulates a complete **data engineering and analytics pipeline** for an EdTech platform. It spans from student activity simulation to real-time streaming, data modeling, and dashboard visualization—all designed to support education-focused product and operations teams.
+This project simulates a complete **data engineering and analytics pipeline** for an EdTech platform. It spans from student activity simulation to real-time streaming, data modeling, and dashboard visualization, designed to support education-focused product and operations teams.
 
 ---
 
-## 🧠 Project Overview
+## Project Overview
 
 The pipeline includes:
 
@@ -14,15 +14,14 @@ The pipeline includes:
 4. **Data Modeling with dbt** — Transform raw JSON into clean, structured, and queryable models.
 5. **Visualization** — Build Power BI dashboards to deliver insights to different teams.
 
+
+### Overview process
+
+![Process](overview_process.png)
+
 ---
 
-## 🛠️ Architecture Diagram
-
-![Architecture](./docs/edtech-architecture.png)
-
----
-
-## 🔧 Tech Stack
+## Tech Stack
 
 | Layer         | Tools Used         |
 | ------------- | ------------------ |
@@ -35,7 +34,7 @@ The pipeline includes:
 
 ---
 
-## 🔍 Key Modules & Directories
+## Key Modules & Directories
 
 | Module                                          | Description                                                               |
 | ----------------------------------------------- | ------------------------------------------------------------------------- |
@@ -48,20 +47,23 @@ The pipeline includes:
 
 ---
 
-## 📊 Dashboards
+## Dashboards
 
-The Power BI report contains 4 pages, designed around real team workflows:
+The Power BI report contains 4 pages:
 
 1. **Overview** — Key metrics, activity trends, and user segments
 ![Overview](./powerbi-dashboard/powerbi-overview.png)
-2. **Learning Engagement** — Lesson completion, content type performance
+
+
+3. **Learning Engagement** — Lesson completion, content type performance
 ![powerbi-learning-engagement](./powerbi-dashboard/powerbi-learning-engagement.png)
-3. **Content Performance** — Learning funnels, outcome-linked metrics
+
+
+5. **Content Performance** — Learning funnels, outcome-linked metrics
 ![powerbi-content-performance](./powerbi-dashboard/powerbi-content-performance.png)
+
+
 7. **User Segmentation** — Profiles by grade, gender, behavior, and location
 ![powerbi-user-segmentation](./powerbi-dashboard/powerbi-user-segmentation.png)
 
-
-
----
 
