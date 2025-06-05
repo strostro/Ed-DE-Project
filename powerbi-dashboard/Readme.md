@@ -24,6 +24,27 @@ The dashboards are powered by data from two sources:
 - **Snowflake models generated via dbt**
 - **Original static tables loaded separately** 
 
-## 🖼️ Screenshots
+## 📊 Dashboard Screenshots
 
-See attached images for each page of the dashboard.
+### 1. Overview
+
+![Overview](powerbi-overview.png)
+
+---
+
+### 2. Learning Engagement
+
+![Learning Engagement](powerbi-learning-engagement.png)
+
+---
+
+### 3. Content Performance
+
+![Content Performance](powerbi-content-performance.png)
+
+---
+
+### 4. User Segmentation
+
+![User Segmentation](powerbi-user-segmentation.png)
+
